@@ -1,18 +1,8 @@
 """ Specifies routing for the application"""
 from flask import render_template, request, jsonify
-from app import db
+from app import app
 from app import database as db_helper
-import mysql.connector
 from subprocess import call
-
-@app.route()
-def open_py_file():
-    call(["python","todo.py"])
-
-
-open_py_file()
-
-
 
 
 @app.route("/delete/<int:task_id>", methods=['POST'])
@@ -62,5 +52,4 @@ def create():
 def homepage():
     """ returns rendered homepage """
     items = db_helper.fetch_todo()
-    return render_template("list.py", items=items)
-
+    return render_template("index.html", items=items)
