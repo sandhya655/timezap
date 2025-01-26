@@ -1,9 +1,6 @@
 """Defines all the functions related to the database"""
-from app import app
-import mysql.connector
+from app import db
 
-
-@app.route("/list")
 def fetch_todo() -> dict:
     """Reads all tasks listed in the todo table
 
@@ -87,5 +84,3 @@ def remove_task_by_id(task_id: int) -> None:
     query = 'Delete From tasks where id={};'.format(task_id)
     conn.execute(query)
     conn.close()
-
-import list
